@@ -1529,6 +1529,13 @@ async function main () {
   const path = core.getInput('path') ? core.getInput('path') : undefined
   const releaseType = core.getInput('release-type')
   const token = core.getInput('token')
+  const types = core.getInput('types');
+
+  // Parse the types if there are any
+  let changelogSections = [];
+  if (types) {
+    changelogSections = JSON.parse(types);
+  }
 
   // First we check for any merged release PRs (PRs merged with the label
   // "autorelease: pending"):
@@ -1558,7 +1565,8 @@ async function main () {
     repoUrl: process.env.GITHUB_REPOSITORY,
     token: token,
     label: RELEASE_LABEL,
-    bumpMinorPreMajor
+    bumpMinorPreMajor,
+    changelogSections
   })
   await release.run()
 }
@@ -48131,54 +48139,54 @@ class ConventionalCommits {
         this.commitPartial = options.commitPartial;
         this.headerPartial = options.headerPartial;
         this.mainTemplate = options.mainTemplate;
-        // this.changelogSections = options.changelogSections;
-        this.changelogSections = [
-            {
-                type: 'feat',
-                section: 'Features',
-                hidden: false,
-            },
-            {
-                type: 'fix',
-                section: 'Bug Fixes',
-                hidden: false,
-            },
-            {
-                type: 'docs',
-                section: 'Documentation',
-                hidden: false,
-            },
-            {
-                type: 'chore',
-                section: 'Miscellaneous',
-                hidden: false,
-            },
-            {
-                type: 'src',
-                section: 'Miscellaneous',
-                hidden: false,
-            },
-            {
-                type: 'style',
-                section: 'Miscellaneous',
-                hidden: false,
-            },
-            {
-                type: 'refactor',
-                section: 'Miscellaneous',
-                hidden: false,
-            },
-            {
-                type: 'perf',
-                section: 'Performance',
-                hidden: false,
-            },
-            {
-                type: 'test',
-                section: 'Tests',
-                hidden: false,
-            },
-        ];
+        this.changelogSections = options.changelogSections;
+        // this.changelogSections = [
+        //   {
+        //     type: 'feat',
+        //     section: 'Features',
+        //     hidden: false,
+        //   },
+        //   {
+        //     type: 'fix',
+        //     section: 'Bug Fixes',
+        //     hidden: false,
+        //   },
+        //   {
+        //     type: 'docs',
+        //     section: 'Documentation',
+        //     hidden: false,
+        //   },
+        //   {
+        //     type: 'chore',
+        //     section: 'Miscellaneous',
+        //     hidden: false,
+        //   },
+        //   {
+        //     type: 'src',
+        //     section: 'Miscellaneous',
+        //     hidden: false,
+        //   },
+        //   {
+        //     type: 'style',
+        //     section: 'Miscellaneous',
+        //     hidden: false,
+        //   },
+        //   {
+        //     type: 'refactor',
+        //     section: 'Miscellaneous',
+        //     hidden: false,
+        //   },
+        //   {
+        //     type: 'perf',
+        //     section: 'Performance',
+        //     hidden: false,
+        //   },
+        //   {
+        //     type: 'test',
+        //     section: 'Tests',
+        //     hidden: false,
+        //   },
+        // ];
         console.log('this is interesting');
     }
     async suggestBump(version) {
