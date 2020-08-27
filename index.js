@@ -19,7 +19,7 @@ async function main () {
     changelogSections = JSON.parse(types);
   }
 
-  core.setOutput('change log secions', changelogSections);
+console.log(changelogSections);
 
   // First we check for any merged release PRs (PRs merged with the label
   // "autorelease: pending"):
