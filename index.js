@@ -19,6 +19,8 @@ async function main () {
     changelogSections = JSON.parse(types);
   }
 
+  core.setOutput('change log secions', changelogSections);
+
   // First we check for any merged release PRs (PRs merged with the label
   // "autorelease: pending"):
   const gr = new GitHubRelease({
