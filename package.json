@@ -1,5 +1,5 @@
-{
-  "name": "release-please-action",
+  {
+  "name": "release-please-action-lholmquist",
   "private": true,
   "version": "1.6.3",
   "description": "automated releases based on conventional commits",
