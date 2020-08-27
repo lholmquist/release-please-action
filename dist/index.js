@@ -48131,7 +48131,54 @@ class ConventionalCommits {
         this.commitPartial = options.commitPartial;
         this.headerPartial = options.headerPartial;
         this.mainTemplate = options.mainTemplate;
-        this.changelogSections = options.changelogSections;
+        // this.changelogSections = options.changelogSections;
+        this.changelogSections = [
+            {
+                type: 'feat',
+                section: 'Features',
+                hidden: false,
+            },
+            {
+                type: 'fix',
+                section: 'Bug Fixes',
+                hidden: false,
+            },
+            {
+                type: 'docs',
+                section: 'Documentation',
+                hidden: false,
+            },
+            {
+                type: 'chore',
+                section: 'Miscellaneous',
+                hidden: false,
+            },
+            {
+                type: 'src',
+                section: 'Miscellaneous',
+                hidden: false,
+            },
+            {
+                type: 'style',
+                section: 'Miscellaneous',
+                hidden: false,
+            },
+            {
+                type: 'refactor',
+                section: 'Miscellaneous',
+                hidden: false,
+            },
+            {
+                type: 'perf',
+                section: 'Performance',
+                hidden: false,
+            },
+            {
+                type: 'test',
+                section: 'Tests',
+                hidden: false,
+            },
+        ];
         console.log('this is interesting');
     }
     async suggestBump(version) {
