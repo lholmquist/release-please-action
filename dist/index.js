@@ -5959,6 +5959,7 @@ class Node extends release_pr_1.ReleasePR {
             commits,
             githubRepoUrl: this.repoUrl,
             bumpMinorPreMajor: this.bumpMinorPreMajor,
+            changelogSections: this.changelogSections,
         });
         const candidate = await this.coerceReleaseCandidate(cc, latestTag);
         const changelogEntry = await cc.generateChangelogEntry({
