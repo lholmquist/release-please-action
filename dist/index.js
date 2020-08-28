@@ -1537,6 +1537,8 @@ async function main () {
     changelogSections = JSON.parse(types);
   }
 
+  console.log('Changelog Sections', types, changelogSections);
+
   // First we check for any merged release PRs (PRs merged with the label
   // "autorelease: pending"):
   const gr = new GitHubRelease({
@@ -46282,6 +46284,7 @@ class ReleasePRFactory {
             ...options,
             ...{ releaseType },
         };
+        console.log(options);
         switch (releaseType) {
             case 'node':
                 return new node_1.Node(releaseOptions);
