@@ -19,7 +19,7 @@ async function main () {
     changelogSections = JSON.parse(types);
   }
 
-console.log(changelogSections);
+  console.log('Changelog Sections', types, changelogSections);
 
   // First we check for any merged release PRs (PRs merged with the label
   // "autorelease: pending"):
