@@ -8622,6 +8622,7 @@ class ReleasePR {
             ? options.lastPackageVersion.replace(/^v/, '')
             : undefined;
         this.gh = this.gitHubInstance(options.octokitAPIs);
+        this.changelogSections = options.changelogSections;
     }
     async run() {
         if (this.snapshot && !this.supportsSnapshots()) {
